@@ -1,4 +1,4 @@
-# AptekaOnline
+# Apteka Online
 
 ## Opis projektu
 
