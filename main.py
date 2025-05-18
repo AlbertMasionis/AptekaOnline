@@ -1,7 +1,7 @@
-from modules.gui import runGui
+from modules.gui import run_gui
 
 def __main__():
-    runGui()
+    run_gui()
 
 if __name__ == "__main__":
     __main__()
