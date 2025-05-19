@@ -1,4 +1,5 @@
 import customtkinter as ctk
+from modules.register_form import register
 import sys
 
 ctk.set_appearance_mode("dark")
@@ -26,7 +27,7 @@ def run_gui():
 
     tiles = [
         ("Zaloguj się", lambda: print("Logowanie")),
-        ("Zarejestruj się", lambda: print("Rejestracja")),
+        ("Zarejestruj się", lambda: register(app)),
         ("Przeglądaj leki", lambda: print("Przegląd")),
         ("Kup leki", lambda: print("Zakup")),
         ("Panel administratora", lambda: print("Admin")),
