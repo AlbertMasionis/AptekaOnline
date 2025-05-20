@@ -13,7 +13,7 @@ class register(ctk.CTkToplevel):
         ctk.CTkLabel(
             self,
             text = "Rejestracja",
-            font=("Arial", 28, "bold"),
+            font=("Arial", 34, "bold"),
             text_color = "#329e76"
         ).pack(pady = 30)
 
@@ -37,7 +37,7 @@ class register(ctk.CTkToplevel):
 
         ctk.CTkButton(
             self,
-            text = "Zarejestruj",
+            text = "Zarejestruj się",
             command = self.submit_form,
             fg_color = "#329e76",
             hover_color = "#2d7f64",
