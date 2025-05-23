@@ -83,7 +83,6 @@ class SerwisKlientow:
             nowe_id = max_id + 1
         if nowe_id > 9999:
             raise ValueError("Brak dostępnych ID")
-
         return f"{nowe_id:04d}"
 
 
