@@ -76,11 +76,15 @@ class SerwisKlientow:
                     'kraj': adres.kraj
                 })
     def generator_id(self):
-        self.ostatnie_id += 1
-        if self.ostatnie_id >9999:
-            raise ValueError("brak dostępnych ID")
-        self.zapisz_ostatnie_id()
-        return f"{self.ostatnie_id:04d}"
+        if not self.klienci:
+            nowe_id = 1
+        else:
+            max_id = max(int(k.id_klienta) for k in self.klienci)
+            nowe_id = max_id + 1
+        if nowe_id > 9999:
+            raise ValueError("Brak dostępnych ID")
+
+        return f"{nowe_id:04d}"
 
 
     def zarejestruj(self, imie, nazwisko, telefon, email, ulica, miasto, kod_pocztowy, kraj):
