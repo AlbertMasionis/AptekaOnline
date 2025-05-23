@@ -2,6 +2,7 @@ import customtkinter as ctk
 from PIL import Image
 from modules.register_form import register
 from modules.login_form import login
+from modules.drug_menager import drugs
 import sys
 
 ctk.set_appearance_mode("dark")
@@ -39,7 +40,7 @@ def run_gui():
     tiles = [
         ("Zaloguj się", icons["login"], lambda: login(app)),
         ("Zarejestruj się", icons["register"], lambda: register(app)),
-        ("Przeglądaj leki", icons["browse"], lambda: print("Przegląd")),
+        ("Przeglądaj leki", icons["browse"], lambda: drugs(app)),
         ("Kup leki", icons["buy"], lambda: print("Zakup")),
         ("Panel administratora", icons["admin"], lambda: print("Admin")),
         ("Wyjdź", icons["exit"], lambda: sys.exit(0))

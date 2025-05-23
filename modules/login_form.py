@@ -4,22 +4,22 @@ class login(ctk.CTkToplevel):
     def __init__(self, master=None):
         super().__init__(master)
         self.title("Logowanie")
-        self.geometry("600x400")
-        self.configure(fg_color = "#1f2937")
+        self.geometry("600x420")
+        self.configure(fg_color="#1f2937")
         self.focus()
         self.grab_set()
 
         ctk.CTkLabel(
             self,
-            text = "Logowanie",
-            font = ("Arial", 38, "bold"),
-            text_color = "#329e76"
-        ).pack(pady = (20, 10))
+            text="Logowanie",
+            font=("Arial", 38, "bold"),
+            text_color="#329e76"
+        ).pack(pady=(20, 10))
 
         self.inputs = {}
 
-        content_frame = ctk.CTkFrame(self, fg_color = "#1f2937")
-        content_frame.pack(padx = 20, pady = 0)
+        content_frame = ctk.CTkFrame(self, fg_color="#1f2937")
+        content_frame.pack(padx=20, pady=0)
 
         fields = [
             ("Email:", "email"),
@@ -29,23 +29,31 @@ class login(ctk.CTkToplevel):
         for label_text, field_name in fields:
             ctk.CTkLabel(
                 content_frame,
-                text = label_text,
-                font = ("Arial", 20, "bold"),
-                text_color = "white"
-            ).pack(pady = (10, 0))
+                text=label_text,
+                font=("Arial", 20, "bold"),
+                text_color="white"
+            ).pack(pady=(10, 0))
 
             entry = ctk.CTkEntry(
                 content_frame,
-                width = 480,
-                height = 45,
-                font = ("Arial", 20, "bold"),
-                corner_radius = 10,
-                text_color = "#1f2937",
-                fg_color = "#329e76",
-                show = "*" if "hasło" in label_text.lower() else ""
+                width=480,
+                height=45,
+                font=("Arial", 20, "bold"),
+                corner_radius=10,
+                text_color="#1f2937",
+                fg_color="#329e76",
+                show="*" if "hasło" in label_text.lower() else ""
             )
-            entry.pack(pady = 5)
+            entry.pack(pady=5)
             self.inputs[field_name] = entry
+
+        self.error_label = ctk.CTkLabel(
+            content_frame,
+            text = "",
+            font = ("Arial", 16, "bold"),
+            text_color = "#ff5f5f"
+        )
+        self.error_label.pack(pady = (10, 0))
 
         ctk.CTkButton(
             content_frame,
@@ -62,5 +70,18 @@ class login(ctk.CTkToplevel):
 
     def submit_form(self):
         data = {key: widget.get() for key, widget in self.inputs.items()}
+        #
+        #
+        # WALIDACJA
+        #
+        #
+        if not data["email"] or not data["password"]:
+            self.error_label.configure(text = "Proszę uzupełnić wszystkie pola.")
+            return
+
+        if data["email"] != "admin@example.com" or data["password"] != "1234":
+            self.error_label.configure(text="Nieprawidłowy email lub hasło.")
+            return
+
         print("Dane logowania:", data)
         self.destroy()
