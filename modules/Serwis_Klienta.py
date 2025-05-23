@@ -1,7 +1,6 @@
 import csv
 import os
-import random
-import time
+
 
 from modules.Model_Adres import Adres
 from modules.Model_Klient import klient
@@ -77,9 +76,12 @@ class SerwisKlientow:
                     'kraj': adres.kraj
                 })
     def generator_id(self):
-        czas = time.strftime('%Y%m%d%H%M%S')
-        losowe = random.randint(10,99)
-        return f'A{czas[2:]}{losowe}'
+        self.ostatnie_id += 1
+        if self.ostatnie_id >9999:
+            raise ValueError("brak dostępnych ID")
+        self.zapisz_ostatnie_id()
+        return f"{self.ostatnie_id:04d}"
+
 
     def zarejestruj(self, imie, nazwisko, telefon, email, ulica, miasto, kod_pocztowy, kraj):
         id_klienta = self.generator_id()
@@ -96,6 +98,4 @@ class SerwisKlientow:
         for klient in self.klienci:
             if klient.id_klienta==id_klienta:
                 return klient
-            else:
-                return None
-
+            return None
