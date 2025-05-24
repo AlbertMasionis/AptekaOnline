@@ -14,7 +14,7 @@ class drugs(ctk.CTkToplevel):
         ctk.CTkLabel(
             self,
             text="Lista leków",
-            font=("Arial", 34, "bold"),
+            font=("Arial", 38, "bold"),
             text_color="#329e76"
         ).pack(pady=(20, 10))
 

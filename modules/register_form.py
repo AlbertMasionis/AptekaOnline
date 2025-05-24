@@ -31,7 +31,10 @@ class register(ctk.CTkToplevel):
             ("Email:", "email"),
             ("Hasło:", "password"),
             ("Powtórz hasło:", "confirm_password"),
-            ("Adres:", "address"),
+            ("Ulica:", "street"),
+            ("Miasto:", "city"),
+            ("Kod pocztowy:", "zip_code"),
+            ("Kraj:", "country"),
             ("Telefon:", "phone")
         ]
 

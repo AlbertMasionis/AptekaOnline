@@ -6,8 +6,8 @@ from modules.session import logged_user
 class BuyDrugsWindow(ctk.CTkToplevel):
     def __init__(self, master=None):
         super().__init__(master)
-        self.title("Panel zakupu leków")
-        self.geometry("600x600")
+        self.title("Kup lek")
+        self.geometry("700x700")
         self.configure(fg_color="#1f2937")
         self.focus()
         self.grab_set()
@@ -24,29 +24,44 @@ class BuyDrugsWindow(ctk.CTkToplevel):
         # Nagłówek
         ctk.CTkLabel(
             self,
-            text="Apteka Online - Zakup leków",
-            font=("Arial", 24, "bold"),
+            text="Panel zakupu leków",
+            font=("Arial", 38, "bold"),
             text_color="#329e76"
-        ).pack(pady=20)
+        ).pack(pady=(30, 20))
+
+        # Ramka główna
+        main_frame = ctk.CTkFrame(self, fg_color="transparent")
+        main_frame.pack(pady=10, padx=20, fill="both", expand=True)
 
         # Ramka formularza
-        form_frame = ctk.CTkFrame(self, fg_color="transparent")
-        form_frame.pack(pady=10)
+        form_frame = ctk.CTkFrame(main_frame, fg_color="transparent")
+        form_frame.pack(pady=20)
 
         # Wybór leku
         ctk.CTkLabel(
             form_frame,
             text="Wybierz lek:",
-            font=("Arial", 18),
+            font=("Arial", 22, "bold"),
             text_color="white"
-        ).pack()
+        ).pack(pady=(0, 10))
 
         drug_names = self.drugs_df["nazwa"].tolist()
         self.dropdown = ctk.CTkOptionMenu(
             form_frame,
             values=drug_names,
             variable=self.selected_drug,
-            font=("Arial", 16)
+            font=("Arial", 20),
+            dropdown_font=("Arial", 18),
+            width=400,
+            height=45,
+            corner_radius=10,
+            fg_color="#329e76",
+            button_color="#329e76",
+            button_hover_color="#32959e",
+            text_color="#1f2937",
+            dropdown_fg_color="#329e76",
+            dropdown_text_color="#1f2937",
+            dropdown_hover_color="#32959e"
         )
         self.dropdown.pack(pady=10)
 
@@ -54,15 +69,20 @@ class BuyDrugsWindow(ctk.CTkToplevel):
         ctk.CTkLabel(
             form_frame,
             text="Ilość:",
-            font=("Arial", 18),
+            font=("Arial", 22, "bold"),
             text_color="white"
-        ).pack()
+        ).pack(pady=(20, 10))
 
         self.qty_entry = ctk.CTkEntry(
             form_frame,
             textvariable=self.quantity,
-            width=100,
-            font=("Arial", 16)
+            width=150,
+            height=45,
+            font=("Arial", 20),
+            corner_radius=10,
+            fg_color="#329e76",
+            text_color="#1f2937",
+            justify="center"
         )
         self.qty_entry.pack(pady=10)
 
@@ -71,26 +91,29 @@ class BuyDrugsWindow(ctk.CTkToplevel):
             form_frame,
             text="Kup",
             command=self.kup_lek,
-            font=("Arial", 18, "bold"),
+            font=("Arial", 22, "bold"),
             fg_color="#329e76",
             hover_color="#32959e",
-            height=40,
-            width=150
-        ).pack(pady=20)
+            text_color="#1f2937",
+            height=55,
+            width=200,
+            corner_radius=25
+        ).pack(pady=30)
 
         # Ramka na komunikaty
-        self.message_frame = ctk.CTkFrame(self, fg_color="transparent")
-        self.message_frame.pack(pady=10, fill="x")
+        self.message_frame = ctk.CTkFrame(main_frame, fg_color="transparent")
+        self.message_frame.pack(pady=(10, 20), fill="x")
 
         self.message_label = ctk.CTkLabel(
             self.message_frame,
             text="",
-            font=("Arial", 16),
+            font=("Arial", 18, "bold"),
             text_color="#ff5f5f",
-            wraplength=500,
+            wraplength=600,
             justify="center"
         )
         self.message_label.pack()
+
 
     def kup_lek(self):
         nazwa = self.selected_drug.get()
