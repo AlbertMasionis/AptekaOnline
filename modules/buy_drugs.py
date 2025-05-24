@@ -24,7 +24,7 @@ class BuyDrugsWindow(ctk.CTkToplevel):
         # Nagłówek
         ctk.CTkLabel(
             self,
-            text="Panel zakupu leków",
+            text="Kup lek",
             font=("Arial", 38, "bold"),
             text_color="#329e76"
         ).pack(pady=(30, 20))
