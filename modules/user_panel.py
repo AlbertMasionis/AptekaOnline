@@ -2,6 +2,7 @@ import customtkinter as ctk
 from modules.buy_drugs import BuyDrugsWindow
 from modules.session import logged_user
 
+
 class UserPanel(ctk.CTkToplevel):
     def __init__(self, master=None):
         super().__init__(master)
@@ -11,13 +12,15 @@ class UserPanel(ctk.CTkToplevel):
         self.focus()
         self.grab_set()
 
+        # Powitanie
         ctk.CTkLabel(
             self,
-            text=f"Witaj, {logged_user.get('first_name', 'Użytkowniku')}!",
+            text=f"Witaj, {logged_user.get('imie', 'Użytkowniku')}!",
             font=("Arial", 28, "bold"),
             text_color="#329e76"
         ).pack(pady=20)
 
+        # Przycisk do zakupu leków
         ctk.CTkButton(
             self,
             text="Kup leki",
@@ -31,4 +34,6 @@ class UserPanel(ctk.CTkToplevel):
             width=300
         ).pack(pady=20)
 
-        # Możesz dodać też „Wyloguj się” lub „Zobacz historię zakupów” itp.
+        # Możesz dodać więcej funkcji np.:
+        # - wyloguj się
+        # - zobacz historię zakupów

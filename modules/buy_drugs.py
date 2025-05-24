@@ -6,7 +6,7 @@ from modules.session import logged_user
 class BuyDrugsWindow(ctk.CTkToplevel):
     def __init__(self, master=None):
         super().__init__(master)
-        self.title("Kup lek")
+        self.title("Kup leki")
         self.geometry("700x700")
         self.configure(fg_color="#1f2937")
         self.focus()

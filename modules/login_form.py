@@ -2,6 +2,7 @@ import customtkinter as ctk
 import csv
 from modules.session import logged_user
 from modules.buy_drugs import BuyDrugsWindow
+from modules.user_panel import UserPanel
 
 
 class login(ctk.CTkToplevel):
@@ -108,8 +109,8 @@ class login(ctk.CTkToplevel):
                 for row in reader:
                     if row.get("email") == email and row.get("haslo") == password:
                         logged_user.update(row)
-                        self.show_message("Logowanie pomyślne! Przenoszenie do panelu...", error=False)
-                        self.after(1500, lambda: [self.destroy(), BuyDrugsWindow(self.master)])
+                        self.show_message("Logowanie pomyślne!", error=False)
+                        self.after(1000, self.finish_login)
                         return
 
                 self.show_message("Nieprawidłowy email lub hasło", error=True)
@@ -124,3 +125,8 @@ class login(ctk.CTkToplevel):
             text=text,
             text_color="#ff5f5f" if error else "#4CAF50"
         )
+
+    def finish_login(self):
+        """Otwiera panel użytkownika i zamyka okno logowania"""
+        UserPanel(self.master if self.master else None)
+        self.destroy()
