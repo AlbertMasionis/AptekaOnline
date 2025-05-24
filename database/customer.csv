@@ -1,4 +1,4 @@
 id,imie,nazwisko,email,haslo,adres,telefon,historia_zakupow
 1,Jan,Kowalski,jan@wp.pl,1234,"ul. Leśna 12, Warszawa",123456789,Ibuprom:2; Apap:1
-2,Anna,Nowak,anna@onet.pl,qwerty,"ul. Lipowa 3, Kraków",987654321,Paracetamol:1; ibuprom:1
+2,Anna,Nowak,anna@onet.pl,qwerty,"ul. Lipowa 3, Kraków",987654321,Paracetamol:1; ibuprom:1; ibuprom:1
 3,Kamil,Zieliński,piotr@gmail.com,abc123,"ul. Długa 99, Gdańsk",555666777,

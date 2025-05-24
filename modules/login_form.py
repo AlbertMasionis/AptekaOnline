@@ -1,7 +1,6 @@
 import customtkinter as ctk
 import csv
 from modules.session import logged_user
-from modules.user_panel import UserPanel
 from modules.buy_drugs import BuyDrugsWindow
 
 
@@ -71,18 +70,16 @@ class login(ctk.CTkToplevel):
 
                 for row in reader:
                     if row.get("email") == email and row.get("haslo") == password:
-                        logged_user.update(row)  # Aktualizacja danych zalogowanego użytkownika
-                        self.show_message("Logowanie pomyślne!", error=False)
-                        self.after(1500, self.destroy)
-                        # Otwórz okno zakupu leków
-                        BuyDrugsWindow(self.master)
+                        logged_user.update(row)
+                        self.show_message("Logowanie pomyślne! Przenoszenie do panelu...", error=False)
+                        self.after(1500, lambda: [self.destroy(), BuyDrugsWindow(self.master)])
                         return
 
                 self.show_message("Nieprawidłowy email lub hasło", error=True)
 
         except Exception as e:
             print(f"Błąd logowania: {str(e)}")
-            self.show_message("Nieprawidłowy email lub hasło", error=True)
+            self.show_message("Wystąpił błąd podczas logowania", error=True)
 
     def show_message(self, text, error=True):
         """Funkcja do wyświetlania komunikatów"""
@@ -90,10 +87,3 @@ class login(ctk.CTkToplevel):
             text=text,
             text_color="#ff5f5f" if error else "#4CAF50"
         )
-
-def submit_form(self):
-    ...
-    if login_is_successful:
-        logged_user.update(...)  # lub jak przechowujesz dane
-        self.destroy()
-        UserPanel(self.master)  # <-- tu otwórz panel użytkownika
