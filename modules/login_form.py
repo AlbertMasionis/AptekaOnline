@@ -33,7 +33,7 @@ class login(ctk.CTkToplevel):
         ctk.CTkLabel(
             form_frame,
             text="Email:",
-            text_color="white",
+            text_color="#dce2e2",
             font=("Arial", 20, "bold")
         ).pack(pady=(10, 0))
 
@@ -52,7 +52,7 @@ class login(ctk.CTkToplevel):
         ctk.CTkLabel(
             form_frame,
             text="Hasło:",
-            text_color="white",
+            text_color="#dce2e2",
             font=("Arial", 20, "bold")
         ).pack(pady=(10, 0))
 

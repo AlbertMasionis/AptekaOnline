@@ -35,6 +35,6 @@ class drugs(ctk.CTkToplevel):
             card.pack(pady=10, fill="x", padx=10)
 
             ctk.CTkLabel(card, text=nazwa, font=("Arial", 20, "bold"), text_color="#329e76").pack(anchor="w", padx=10, pady=(5, 0))
-            ctk.CTkLabel(card, text=f"ID: {id}", font=("Arial", 16), text_color="white").pack(anchor="w", padx=10)
-            ctk.CTkLabel(card, text=f"Cena: {cena} zł", font=("Arial", 16), text_color="white").pack(anchor="w", padx=10)
-            ctk.CTkLabel(card, text=f"Stan magazynowy: {int(stan_magazynowy)}", font=("Arial", 16), text_color="white").pack(anchor="w", padx=10, pady=(0, 5))
+            ctk.CTkLabel(card, text=f"ID: {id}", font=("Arial", 16), text_color="#dce2e2").pack(anchor="w", padx=10)
+            ctk.CTkLabel(card, text=f"Cena: {cena} zł", font=("Arial", 16), text_color="#dce2e2").pack(anchor="w", padx=10)
+            ctk.CTkLabel(card, text=f"Stan magazynowy: {int(stan_magazynowy)}", font=("Arial", 16), text_color="#dce2e2").pack(anchor="w", padx=10, pady=(0, 5))

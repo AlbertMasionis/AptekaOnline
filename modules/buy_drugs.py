@@ -42,7 +42,7 @@ class BuyDrugsWindow(ctk.CTkToplevel):
             form_frame,
             text="Wybierz lek:",
             font=("Arial", 22, "bold"),
-            text_color="white"
+            text_color="#dce2e2"
         ).pack(pady=(0, 10))
 
         drug_names = self.drugs_df["nazwa"].tolist()
@@ -70,7 +70,7 @@ class BuyDrugsWindow(ctk.CTkToplevel):
             form_frame,
             text="Ilość:",
             font=("Arial", 22, "bold"),
-            text_color="white"
+            text_color="#dce2e2"
         ).pack(pady=(20, 10))
 
         self.qty_entry = ctk.CTkEntry(

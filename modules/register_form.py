@@ -43,7 +43,7 @@ class register(ctk.CTkToplevel):
                 scroll_frame,
                 text=label_text,
                 font=("Arial", 20, "bold"),
-                text_color="white"
+                text_color="#dce2e2"
             ).pack(pady=(10, 0))
 
             entry = ctk.CTkEntry(
