@@ -1,4 +1,6 @@
-id,imie,nazwisko,email,haslo,adres,telefon,historia_zakupow
-1,Jan,Kowalski,jan@wp.pl,1234,"ul. Leśna 12, Warszawa",123456789,Ibuprom:2; Apap:1
-2,Anna,Nowak,anna@onet.pl,qwerty,"ul. Lipowa 3, Kraków",987654321,Paracetamol:1; ibuprom:1; ibuprom:1; ibuprom:2
-3,Kamil,Zieliński,piotr@gmail.com,abc123,"ul. Długa 99, Gdańsk",555666777,
+id_klienta,imie,nazwisko,telefon,email,haslo,historia_zakupow
+1,Jan,Kowalski,"ul. Leśna 12, Warszawa",jan@wp.pl,,
+2,Anna,Nowak,"ul. Lipowa 3, Kraków",anna@onet.pl,,
+3,Kamil,Zieliński,"ul. Długa 99, Gdańsk",piotr@gmail.com,,
+4,Jakub,Prytyk,123321123,JakPry@gmail.com,qwerty,apap:23; apap:1
+5,Bartek,Szmelc,354432654,BarPer@gmail.com,qwerty,gripex:3

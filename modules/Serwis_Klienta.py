@@ -1,7 +1,6 @@
 import csv
 import os
 
-
 from modules.Model_Adres import Adres
 from modules.Model_Klient import klient
 
@@ -24,6 +23,7 @@ class SerwisKlientow:
                         row['nazwisko'],
                         row['telefon'],
                         row['email'],
+                        row['haslo']
                     ))
         return klienci
     def wczytaj_adresy(self):
@@ -46,7 +46,7 @@ class SerwisKlientow:
         sciezka = os.path.join('database','customer.csv')
 
         with open(sciezka, mode='w', encoding='utf-8', newline='') as plik:
-            pola = ['id_klienta', 'imie', 'nazwisko',' telefon', 'email']
+            pola = ['id_klienta', 'imie', 'nazwisko','telefon', 'email','haslo']
             writer = csv.DictWriter(plik, fieldnames=pola)
 
             writer.writeheader()
@@ -57,13 +57,14 @@ class SerwisKlientow:
                     'nazwisko': klient.nazwisko,
                     'telefon': klient.telefon,
                     'email': klient.email,
+                    'haslo': klient.haslo,
                 })
 
     def zapisz_adresy(self):
         sciezka = os.path.join('database','address.csv')
 
         with open(sciezka, mode='w',encoding='utf-8', newline='') as plik:
-            pola = ['id_klienta','ulica','miasto','kod-pocztowy','kraj']
+            pola = ['id_klienta','ulica','miasto','kod_pocztowy','kraj']
             writer = csv.DictWriter(plik, fieldnames=pola)
 
             writer.writeheader()
@@ -72,9 +73,10 @@ class SerwisKlientow:
                     'id_klienta': adres.id_klienta,
                     'ulica': adres.ulica,
                     'miasto': adres.miasto,
-                    'kod-pocztowy': adres.kod_pocztowy,
+                    'kod_pocztowy': adres.kod_pocztowy,
                     'kraj': adres.kraj
                 })
+    #Generator ID generujący po prostu od najmniejszej
     def generator_id(self):
         if not self.klienci:
             nowe_id = 1
@@ -86,10 +88,10 @@ class SerwisKlientow:
         return f"{nowe_id:04d}"
 
 
-    def zarejestruj(self, imie, nazwisko, telefon, email, ulica, miasto, kod_pocztowy, kraj):
+    def zarejestruj(self, imie, nazwisko, telefon, email, haslo, ulica, miasto, kod_pocztowy, kraj):
         id_klienta = self.generator_id()
 
-        nowy_klient = klient(id_klienta, imie, nazwisko, telefon, email)
+        nowy_klient = klient(id_klienta, imie, nazwisko, telefon, email, haslo)
         nowy_adres = Adres(id_klienta, ulica, miasto, kod_pocztowy, kraj)
 
         self.klienci.append(nowy_klient)
@@ -101,4 +103,4 @@ class SerwisKlientow:
         for klient in self.klienci:
             if klient.id_klienta==id_klienta:
                 return klient
-            return None
+        return None

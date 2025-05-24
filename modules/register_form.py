@@ -1,4 +1,5 @@
 import customtkinter as ctk
+from modules.Serwis_Klienta import SerwisKlientow
 
 class register(ctk.CTkToplevel):
     def __init__(self, master=None):
@@ -8,6 +9,7 @@ class register(ctk.CTkToplevel):
         self.configure(fg_color="#1f2937")
         self.focus()
         self.grab_set()
+        self.serwis_klienow = SerwisKlientow()
 
         ctk.CTkLabel(
             self,
@@ -97,5 +99,26 @@ class register(ctk.CTkToplevel):
             self.error_label.configure(text="Hasła się nie zgadzają.")
             return
 
-        print("Dane z formularza:", data)
-        self.destroy()
+        try:
+            id_klienta = self.serwis_klienow.zarejestruj(
+                imie=data["first_name"],
+                nazwisko=data["last_name"],
+                telefon=data["phone"],
+                email=data["email"],
+                haslo=data["password"],
+                ulica=data["street"],
+                miasto=data["city"],
+                kod_pocztowy=data["zip_code"],
+                kraj=data["country"]
+            )
+            self.serwis_klienow.zapisz_klientow()
+            self.serwis_klienow.zapisz_adresy()
+
+            self.error_label.configure(text=f"Rejestracja udana! ID klienta: {id_klienta}", text_color="#329e76")
+            self.after(3000, self.destroy)
+        except Exception as e:
+            self.error_label.configure(text=f"Błąd rejestracji: {str(e)}")
+
+        #Zmieniłem troszeczke żeby znikało po 3 sekundach i żeby pisało Udana rejestracja
+        #print("Dane z formularza:", data)
+        #self.destroy()
