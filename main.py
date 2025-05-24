@@ -1,9 +1,9 @@
+from modules.login_form import login
 from modules.gui import run_gui
 
 def __main__():
-    run_gui()
+    run_gui()  # Uruchamia główną aplikację
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     __main__()
-
 
