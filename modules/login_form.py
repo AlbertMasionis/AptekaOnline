@@ -99,11 +99,11 @@ class login(ctk.CTkToplevel):
         self.message_label.pack()
 
     def authenticate(self):
-        email = self.email_entry.get()
-        password = self.password_entry.get()
+        email = self.email_entry.get().strip()
+        password = self.password_entry.get().strip()
 
         try:
-            with open("database/customer.csv", "r", encoding="utf-8") as file:
+            with open("database/customer.csv", "r", encoding="utf-8", newline='') as file:
                 reader = csv.DictReader(file)
 
                 for row in reader:
@@ -127,6 +127,17 @@ class login(ctk.CTkToplevel):
         )
 
     def finish_login(self):
-        """Otwiera panel użytkownika i zamyka okno logowania"""
-        UserPanel(self.master if self.master else None)
+        """Otwiera odpowiedni panel na podstawie ID użytkownika"""
+        try:
+            user_id = int(logged_user.get("id_klienta", -1))
+            if user_id == 0:
+                from modules.admin_panel import AdminPanel
+                AdminPanel(self.master if self.master else None)
+            else:
+                from modules.user_panel import UserPanel
+                UserPanel(self.master if self.master else None)
+        except Exception as e:
+            print(f"Błąd podczas otwierania panelu: {e}")
+
         self.destroy()
+

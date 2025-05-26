@@ -1,6 +1,7 @@
 id_klienta,imie,nazwisko,telefon,email,haslo,historia_zakupow
+0,Admin,Admin,997,admin@admin.com,admin,
 1,Jan,Kowalski,"ul. Leśna 12, Warszawa",jan@wp.pl,,
 2,Anna,Nowak,"ul. Lipowa 3, Kraków",anna@onet.pl,,
 3,Kamil,Zieliński,"ul. Długa 99, Gdańsk",piotr@gmail.com,,
-4,Jakub,Prytyk,123321123,JakPry@gmail.com,qwerty,apap:23; apap:1
-5,Bartek,Szmelc,354432654,BarPer@gmail.com,qwerty,gripex:3
+4,Jakub,Prytyk,123321123,JakPry@gmail.com,qwerty,"apap:23; apap:1; gripex:23"
+5,Bartek,Szmelc,354432654,BarPer@gmail.com,qwerty,"gripex:3"

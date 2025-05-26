@@ -2,10 +2,11 @@ import customtkinter as ctk
 from PIL import Image
 from modules.register_form import register
 from modules.login_form import login
-from modules.drug_menager import drugs
+from modules.drug_finder import drugs
+from modules.admin_panel import AdminPanel
 from modules.buy_drugs import BuyDrugsWindow
 from modules.session import logged_user
-import tkinter.messagebox as messagebox
+import tkinter.messagebox as messageboxz
 
 
 import sys
@@ -46,7 +47,6 @@ def run_gui():
         ("Zaloguj się", icons["login"], lambda: login(app)),
         ("Zarejestruj się", icons["register"], lambda: register(app)),
         ("Przeglądaj leki", icons["browse"], lambda: drugs(app)),
-        ("Panel administratora", icons["admin"], lambda: print("Admin")),
         ("Wyjdź", icons["exit"], lambda: sys.exit(0))
     ]
 

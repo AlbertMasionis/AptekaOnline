@@ -85,12 +85,6 @@ class register(ctk.CTkToplevel):
     def submit_form(self):
         data = {key: widget.get() for key, widget in self.inputs.items()}
 
-        #
-        #
-        # WALIDACJA
-        #
-        #
-
         if not all(data.values()):
             self.error_label.configure(text="Uzupełnij wszystkie pola.")
             return
