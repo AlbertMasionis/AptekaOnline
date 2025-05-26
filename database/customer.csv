@@ -1,9 +1,9 @@
-id_klienta,imie,nazwisko,telefon,email,haslo
-0,Admin,Admin,997,admin,admin
-2,Anna,Nowak,"ul. Lipowa 3, Kraków",anna@onet.pl,
-3,Kamil,Zieliński,"ul. Długa 99, Gdańsk",piotr@gmail.com,
-4,Jakub,Prytyk,123321123,JakPry@gmail.com,qwerty
-5,Bartek,Szmelc,354432654,BarPer@gmail.com,qwerty
-2518,Janusz,Kowalski,,,
-9464,Krzysztof,Kononowicz,101010101,knur@o2.pl,kwi
-9465,aa,bb,55,cc,dd
+id_klienta,imie,nazwisko,telefon,email,haslo,historia_zakupow
+0,Admin,Admin,997,admin,admin,
+2,Anna,Nowak,"ul. Lipowa 3, Kraków",anna@onet.pl,,
+3,Kamil,Zieliński,"ul. Długa 99, Gdańsk",piotr@gmail.com,,
+4,Jakub,Prytyk,123321123,JakPry@gmail.com,qwerty,
+5,Bartek,Szmelc,354432654,BarPer@gmail.com,qwerty,
+2518,Janusz,Kowalski,,,,
+9464,Krzysztof,Kononowicz,101010101,knur@o2.pl,kwi,skurwisol:1; skurwisol:1; skurwisol:1; skurwisol:1
+9465,aa,bb,55,cc,dd,
