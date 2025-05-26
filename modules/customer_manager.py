@@ -3,13 +3,12 @@ import random
 import os
 
 
-def register_client(firstname, lastname):
+def register_client(firstname, lastname, phone, email, password):
     client_id = random.randint(1000, 9999)
     with open("database/customer.csv", mode="a", newline='', encoding="utf-8") as file:
         writer = csv.writer(file)
-        writer.writerow([client_id, firstname, lastname, "", "", "", ""])
+        writer.writerow([client_id, firstname, lastname, phone, email, password, ""])
 
-    # Tworzy plik klienta
     open(f"database/{client_id}.txt", "w").close()
 
 
