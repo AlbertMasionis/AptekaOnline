@@ -10,12 +10,6 @@ class BuyDrugsWindow(ctk.CTkToplevel):
         self.configure(fg_color="#1f2937")
         self.focus()
         self.grab_set()
-
-        if not logged_user:
-            self.show_message("Musisz być zalogowany", error=True)
-            self.after(2000, self.destroy)
-            return
-
         self.drugs_df = pd.read_excel("database/drugs.xlsx")
         self.selected_drug = ctk.StringVar()
         self.quantity = ctk.IntVar(value=1)
