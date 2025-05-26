@@ -1,9 +1,8 @@
 import customtkinter as ctk
 import csv
 from modules.session import logged_user
-from modules.buy_drugs import BuyDrugsWindow
-from modules.user_panel import UserPanel
-
+#from modules.buy_drugs import BuyDrugsWindow
+#from modules.user_panel import UserPanel
 
 class login(ctk.CTkToplevel):
     def __init__(self, master=None):
@@ -14,7 +13,6 @@ class login(ctk.CTkToplevel):
         self.focus()
         self.grab_set()
 
-        # Nagłówek
         ctk.CTkLabel(
             self,
             text="Logowanie",
@@ -22,15 +20,12 @@ class login(ctk.CTkToplevel):
             text_color="#329e76"
         ).pack(pady=(20, 30))
 
-        # Główna ramka dla formularza
         main_frame = ctk.CTkFrame(self, fg_color="transparent")
         main_frame.pack(pady=20, padx=20, fill="both", expand=True)
 
-        # Ramka na pola formularza
         form_frame = ctk.CTkFrame(main_frame, fg_color="transparent")
         form_frame.pack(fill="x")
 
-        # Pole email
         ctk.CTkLabel(
             form_frame,
             text="Email:",
@@ -49,7 +44,7 @@ class login(ctk.CTkToplevel):
         )
         self.email_entry.pack(pady=(5, 20))
 
-        # Pole hasła
+
         ctk.CTkLabel(
             form_frame,
             text="Hasło:",
@@ -69,7 +64,6 @@ class login(ctk.CTkToplevel):
         )
         self.password_entry.pack(pady=(5, 20))
 
-        # Przycisk logowania
         ctk.CTkButton(
             form_frame,
             text="Zaloguj się",
@@ -83,11 +77,9 @@ class login(ctk.CTkToplevel):
             height=55
         ).pack(pady=30)
 
-        # Ramka na komunikat
         message_frame = ctk.CTkFrame(main_frame, fg_color="transparent")
         message_frame.pack(pady=(10, 0), fill="x")
 
-        # Etykieta komunikatu
         self.message_label = ctk.CTkLabel(
             message_frame,
             text="",
@@ -120,14 +112,12 @@ class login(ctk.CTkToplevel):
             self.show_message("Wystąpił błąd podczas logowania", error=True)
 
     def show_message(self, text, error=True):
-        """Funkcja do wyświetlania komunikatów"""
         self.message_label.configure(
             text=text,
             text_color="#ff5f5f" if error else "#4CAF50"
         )
 
     def finish_login(self):
-        """Otwiera odpowiedni panel na podstawie ID użytkownika"""
         try:
             user_id = int(logged_user.get("id_klienta", -1))
             if user_id == 0:

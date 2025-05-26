@@ -4,7 +4,7 @@ import os
 
 
 def add_drug(name, price, stock=0):
-    """Dodaje nowy lek do bazy danych Excel (drugs.xlsx)."""
+
     filepath = "database/drugs.xlsx"
 
     if not os.path.exists(filepath):
@@ -15,7 +15,6 @@ def add_drug(name, price, stock=0):
         wb = load_workbook(filepath)
         ws = wb.active
 
-    # Znajdź najwyższe ID i dodaj nowe
     max_id = 0
     for row in ws.iter_rows(min_row=2, values_only=True):
         if row[0] and isinstance(row[0], int):
@@ -27,10 +26,6 @@ def add_drug(name, price, stock=0):
 
 
 def remove_drug(identifier):
-    """
-    Usuwa lek na podstawie ID (int) lub nazwy (str).
-    Zwraca True jeśli lek został usunięty, False w przeciwnym razie.
-    """
     filepath = "database/drugs.xlsx"
 
     if not os.path.exists(filepath):
@@ -40,7 +35,7 @@ def remove_drug(identifier):
     ws = wb.active
     removed = False
 
-    rows = list(ws.iter_rows(min_row=2))  # Pomijamy nagłówek
+    rows = list(ws.iter_rows(min_row=2))
 
     for row in rows:
         id_cell = row[0].value

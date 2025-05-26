@@ -1,6 +1,6 @@
 import customtkinter as ctk
-from tkinter import messagebox
-from modules.buy_drugs import BuyDrugsWindow
+#from tkinter import messagebox
+#from modules.buy_drugs import BuyDrugsWindow
 from modules.customer_manager import register_client, delete_client
 from modules.drug_manager import add_drug, remove_drug
 
@@ -30,7 +30,6 @@ class AdminPanel(ctk.CTkToplevel):
     def setup_drug_tab(self):
         tab = self.tabs.add("Zarządzaj lekami")
 
-        # Dodawanie leku
         ctk.CTkLabel(tab, text="Dodaj lek", font=("Arial", 20, "bold"), text_color="white").pack(pady=10)
         self.drug_name = ctk.CTkEntry(tab, placeholder_text="Nazwa leku")
         self.drug_name.pack(pady=5)
@@ -40,7 +39,6 @@ class AdminPanel(ctk.CTkToplevel):
         self.drug_stock.pack(pady=5)
         ctk.CTkButton(tab, text="Dodaj lek", command=self.add_drug_btn).pack(pady=10)
 
-        # Usuwanie leku
         ctk.CTkLabel(tab, text="Usuń lek", font=("Arial", 20, "bold"), text_color="white").pack(pady=20)
         self.drug_identifier = ctk.CTkEntry(tab, placeholder_text="ID lub nazwa")
         self.drug_identifier.pack(pady=5)
@@ -51,7 +49,6 @@ class AdminPanel(ctk.CTkToplevel):
     def setup_client_tab(self):
         tab = self.tabs.add("Zarządzaj klientami")
 
-        # Dodawanie klienta
         ctk.CTkLabel(tab, text="Dodaj klienta", font=("Arial", 20, "bold"), text_color="white").pack(pady=10)
         self.client_firstname = ctk.CTkEntry(tab, placeholder_text="Imię")
         self.client_firstname.pack(pady=5)
@@ -66,7 +63,6 @@ class AdminPanel(ctk.CTkToplevel):
 
         ctk.CTkButton(tab, text="Dodaj klienta", command=self.add_client_btn).pack(pady=10)
 
-        # Usuwanie klienta
         ctk.CTkLabel(tab, text="Usuń klienta", font=("Arial", 20, "bold"), text_color="white").pack(pady=20)
         self.client_identifier = ctk.CTkEntry(tab, placeholder_text="ID lub nazwisko")
         self.client_identifier.pack(pady=5)

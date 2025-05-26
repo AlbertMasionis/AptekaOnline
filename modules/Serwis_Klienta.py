@@ -4,7 +4,6 @@ import os
 from modules.Model_Adres import Adres
 from modules.Model_Klient import klient
 
-
 class SerwisKlientow:
     def __init__(self):
         self.klienci = self.wczytaj_klientow()

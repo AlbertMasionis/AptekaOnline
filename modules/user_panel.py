@@ -13,7 +13,6 @@ class UserPanel(ctk.CTkToplevel):
         self.focus()
         self.grab_set()
 
-        # Powitanie
         ctk.CTkLabel(
             self,
             text=f"Witaj, {logged_user.get('imie', 'Użytkowniku')}!",
@@ -21,7 +20,6 @@ class UserPanel(ctk.CTkToplevel):
             text_color="#329e76"
         ).pack(pady=20)
 
-        # Przycisk do zakupu leków
         ctk.CTkButton(
             self,
             text="Kup leki",
@@ -35,7 +33,6 @@ class UserPanel(ctk.CTkToplevel):
             width=300
         ).pack(pady=20)
 
-        # Historia zakupów
         client_id = logged_user.get("id_klienta")
         history = get_purchase_history(client_id)
         history_text = "Brak historii zakupów." if not history else "Historia zakupów:\n" + "\n".join(f"• {item}" for item in history)
