@@ -31,7 +31,7 @@ class register(ctk.CTkToplevel):
             ("Imię:", "first_name"),
             ("Nazwisko:", "last_name"),
             ("Email:", "email"),
-            ("Hasło:", "password"),
+            ("Hasło (max 20 znaków):", "password"),
             ("Powtórz hasło:", "confirm_password"),
             ("Ulica:", "street"),
             ("Miasto:", "city"),
@@ -65,7 +65,8 @@ class register(ctk.CTkToplevel):
             scroll_frame,
             text="",
             font=("Arial", 16, "bold"),
-            text_color="#ff5f5f"
+            text_color="#ff5f5f",
+            wraplength=480
         )
         self.error_label.pack(pady=(10, 0))
 
@@ -85,23 +86,32 @@ class register(ctk.CTkToplevel):
     def submit_form(self):
         data = {key: widget.get() for key, widget in self.inputs.items()}
 
+        # Sprawdzenie czy wszystkie pola są wypełnione
         if not all(data.values()):
             self.error_label.configure(text="Uzupełnij wszystkie pola.")
             return
 
+        # Walidacja długości hasła
+        if len(data["password"]) > 20:
+            self.error_label.configure(text="Hasło może mieć maksymalnie 20 znaków!")
+            return
+
+        # Sprawdzenie zgodności haseł
         if data["password"] != data["confirm_password"]:
             self.error_label.configure(text="Hasła się nie zgadzają.")
             return
 
+        # Sprawdzenie unikalności emaila
         if self.serwis_klienow.Czy_jest_email(data["email"]):
-            self.error_label.configure(text="email jest już zajerejestrowany!")
+            self.error_label.configure(text="Email jest już zarejestrowany!")
             return
 
+        # Sprawdzenie unikalności telefonu
         if self.serwis_klienow.Czy_jest_telefon(data["phone"]):
-            self.error_label.configure(text="telefon jest już zarejestrowany!")
+            self.error_label.configure(text="Telefon jest już zarejestrowany!")
             return
 
-
+        # Próba rejestracji
         try:
             id_klienta = self.serwis_klienow.zarejestruj(
                 imie=data["first_name"],
@@ -117,11 +127,10 @@ class register(ctk.CTkToplevel):
             self.serwis_klienow.zapisz_klientow()
             self.serwis_klienow.zapisz_adresy()
 
-            self.error_label.configure(text=f"Rejestracja udana! ID klienta: {id_klienta}", text_color="#329e76")
+            self.error_label.configure(
+                text=f"Rejestracja udana! ID klienta: {id_klienta}",
+                text_color="#329e76"
+            )
             self.after(3000, self.destroy)
         except Exception as e:
             self.error_label.configure(text=f"Błąd rejestracji: {str(e)}")
-
-        #Zmieniłem troszeczke żeby znikało po 3 sekundach i żeby pisało Udana rejestracja
-        #print("Dane z formularza:", data)
-        #self.destroy()
