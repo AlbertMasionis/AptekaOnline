@@ -46,8 +46,6 @@ def run_gui():
         "login": ctk.CTkImage(Image.open("assets/login.png"), size=(32, 32)),
         "register": ctk.CTkImage(Image.open("assets/register.png"), size=(32, 32)),
         "browse": ctk.CTkImage(Image.open("assets/browse.png"), size=(32, 32)),
-        "buy": ctk.CTkImage(Image.open("assets/buy.png"), size=(32, 32)),
-        "admin": ctk.CTkImage(Image.open("assets/admin.png"), size=(32, 32)),
         "exit": ctk.CTkImage(Image.open("assets/exit.png"), size=(32, 32)),
     }
 
