@@ -93,6 +93,15 @@ class register(ctk.CTkToplevel):
             self.error_label.configure(text="Hasła się nie zgadzają.")
             return
 
+        if self.serwis_klienow.Czy_jest_email(data["email"]):
+            self.error_label.configure(text="email jest już zajerejestrowany!")
+            return
+
+        if self.serwis_klienow.Czy_jest_telefon(data["phone"]):
+            self.error_label.configure(text="telefon jest już zarejestrowany!")
+            return
+
+
         try:
             id_klienta = self.serwis_klienow.zarejestruj(
                 imie=data["first_name"],

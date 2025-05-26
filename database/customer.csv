@@ -1,7 +1,11 @@
-id_klienta,imie,nazwisko,telefon,email,haslo,historia_zakupow
-0,Admin,Admin,997,admin@admin.com,admin,
-1,Jan,Kowalski,"ul. Leśna 12, Warszawa",jan@wp.pl,,
-2,Anna,Nowak,"ul. Lipowa 3, Kraków",anna@onet.pl,,
-3,Kamil,Zieliński,"ul. Długa 99, Gdańsk",piotr@gmail.com,,
-4,Jakub,Prytyk,123321123,JakPry@gmail.com,qwerty,"apap:23; apap:1; gripex:23"
-5,Bartek,Szmelc,354432654,BarPer@gmail.com,qwerty,"gripex:3"
+id_klienta,imie,nazwisko,telefon,email,haslo
+0,Admin,Admin,997,admin@admin.com,admin
+2,Anna,Nowak,"ul. Lipowa 3, Kraków",anna@onet.pl,
+3,Kamil,Zieliński,"ul. Długa 99, Gdańsk",piotr@gmail.com,
+4,Jakub,Prytyk,123321123,JakPry@gmail.com,qwerty
+5,Bartek,Szmelc,354432654,BarPer@gmail.com,qwerty
+0006,Mateusz,Pest,123321123,anna@onet.pl,tjak
+0007,Jakub,Plaplus,123321123,JakPry@gmail.com,qwerty
+0008,Szymon,Szmit,123321123,piotr@gmail.com,szymson
+0009,Filip,Muszla,123321123,anna@onet.pl,Filipson
+0010,Adam,Pilsko,123312123,Adamisko@gmail.com,Opa

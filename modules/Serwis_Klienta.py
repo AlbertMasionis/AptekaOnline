@@ -104,3 +104,16 @@ class SerwisKlientow:
             if klient.id_klienta==id_klienta:
                 return klient
         return None
+
+    def Czy_jest_email(self, email):
+        email = email.strip().lower()
+        for klient in self.klienci:
+            if klient.email.strip().lower() == email:
+                return True
+        return False
+
+    def Czy_jest_telefon(self, telefon):
+        for klient in self.klienci:
+            if klient.telefon.lower() == telefon.lower():
+                return True
+        return False
