@@ -1,5 +1,7 @@
 import csv
 import os
+from functools import wraps
+from datetime import datetime
 
 from modules.Model_Adres import Adres
 from modules.Model_Klient import klient
@@ -8,6 +10,20 @@ class SerwisKlientow:
     def __init__(self):
         self.klienci = self.wczytaj_klientow()
         self.adresy = self.wczytaj_adresy()
+
+    def loguj_akcje(func):
+        @wraps(func)
+        def dekorator(self, *args, **kwargs):
+            print(f"[{datetime.now()}] Wywołano funkcje:{func.__name__}")
+            try:
+                result = func(self, *args, **kwargs)
+                print(f"[{datetime.now()}] Funckja: {func.__name__} zakończona sukcsesem")
+                return result
+            except Exception as e:
+                print(f"[{datetime.now()}] Błąd funkcji {func.__name__}: {str(e)}")
+                raise
+        return dekorator
+
     def wczytaj_klientow(self):
         sciezka = os.path.join("database","customer.csv")
         klienci = []
@@ -103,14 +119,14 @@ class SerwisKlientow:
             if klient.id_klienta==id_klienta:
                 return klient
         return None
-
+    @loguj_akcje
     def Czy_jest_email(self, email):
         email = email.strip().lower()
         for klient in self.klienci:
             if klient.email.strip().lower() == email:
                 return True
         return False
-
+    @loguj_akcje
     def Czy_jest_telefon(self, telefon):
         for klient in self.klienci:
             if klient.telefon.lower() == telefon.lower():
