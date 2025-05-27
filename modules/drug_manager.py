@@ -12,21 +12,18 @@ def add_drug(name, price, stock=0, prescription_number="0"):
         wb = load_workbook(filepath)
         ws = wb.active
 
-        # Upewnij się, że kolumna numer_recepty istnieje
-        headers = [cell.value for cell in ws[1]]
+        headers = [cell.value for cell in ws[1]] # pobieranie nagłówków z pierwszego wiersza
         if "numer_recepty" not in headers:
-            ws.insert_cols(len(headers) + 1)
-            ws.cell(row=1, column=len(headers) + 1, value="numer_recepty")
+            ws.insert_cols(len(headers) + 1) # dodaje nowa kolumne na koncu arkusza
+            ws.cell(row=1, column=len(headers) + 1, value="numer_recepty") #wypisuje nagłówek
 
-    # Znajdź maksymalne ID
     max_id = 0
-    for row in ws.iter_rows(min_row=2, values_only=True):
-        if row[0] and isinstance(row[0], int):
+    for row in ws.iter_rows(min_row=2, values_only=True): #przechodzi odrazu do 2 wiersza
+        if row[0] and isinstance(row[0], int): #sprawdza id w pierwszej kolumnie
             max_id = max(max_id, row[0])
 
     new_id = max_id + 1
 
-    # Dodaj dane do arkusza
     ws.append([new_id, name, price, stock, prescription_number])
     wb.save(filepath)
 
