@@ -91,6 +91,11 @@ class register(ctk.CTkToplevel):
             self.error_label.configure(text="Uzupełnij wszystkie pola.")
             return
 
+        # Walidacja minimalnej długości hasła
+        if len(data["password"]) < 1:
+            self.error_label.configure(text="Hasło musi mieć co najmniej 1 znak.")
+            return
+
         # Walidacja długości hasła
         if len(data["password"]) > 20:
             self.error_label.configure(text="Hasło może mieć maksymalnie 20 znaków!")
@@ -101,6 +106,10 @@ class register(ctk.CTkToplevel):
             self.error_label.configure(text="Hasła się nie zgadzają.")
             return
 
+        # Walidacja formatu numeru telefonu (tylko cyfry)
+        if not data["phone"].isdigit():
+            self.error_label.configure(text="Numer telefonu może zawierać tylko cyfry.")
+            return
         # Sprawdzenie unikalności emaila
         if self.serwis_klienow.Czy_jest_email(data["email"]):
             self.error_label.configure(text="Email jest już zarejestrowany!")
