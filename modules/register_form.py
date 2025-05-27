@@ -31,7 +31,7 @@ class register(ctk.CTkToplevel):
             ("Imię:", "first_name"),
             ("Nazwisko:", "last_name"),
             ("Email:", "email"),
-            ("Hasło (max 20 znaków):", "password"),
+            ("Hasło (6 - 20 znaków):", "password"),
             ("Powtórz hasło:", "confirm_password"),
             ("Ulica:", "street"),
             ("Miasto:", "city"),
@@ -92,13 +92,13 @@ class register(ctk.CTkToplevel):
             return
 
         # Walidacja minimalnej długości hasła
-        if len(data["password"]) < 1:
-            self.error_label.configure(text="Hasło musi mieć co najmniej 1 znak.")
+        if len(data["password"]) < 6:
+            self.error_label.configure(text="Hasło musi mieć co najmniej 6 znaków.")
             return
 
         # Walidacja długości hasła
         if len(data["password"]) > 20:
-            self.error_label.configure(text="Hasło może mieć maksymalnie 20 znaków!")
+            self.error_label.configure(text="Hasło może mieć maksymalnie 20 znaków.")
             return
 
         # Sprawdzenie zgodności haseł

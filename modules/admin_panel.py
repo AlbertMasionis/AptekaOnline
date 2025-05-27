@@ -38,6 +38,8 @@ class AdminPanel(ctk.CTkToplevel):
         self.drug_stock = ctk.CTkEntry(tab, placeholder_text="Stan magazynowy")  # <- poprawnie tu
         self.drug_stock.pack(pady=5)
         ctk.CTkButton(tab, text="Dodaj lek", command=self.add_drug_btn).pack(pady=10)
+        self.drug_prescription = ctk.CTkEntry(tab, placeholder_text="Numer recepty (lub 0)")
+        self.drug_prescription.pack(pady=5)
 
         ctk.CTkLabel(tab, text="Usuń lek", font=("Arial", 20, "bold"), text_color="white").pack(pady=20)
         self.drug_identifier = ctk.CTkEntry(tab, placeholder_text="ID lub nazwa")
@@ -72,6 +74,8 @@ class AdminPanel(ctk.CTkToplevel):
 
     def add_drug_btn(self):
         try:
+            prescription = self.drug_prescription.get().strip()
+            add_drug(name, price, stock, prescription)
             name = self.drug_name.get()
             price = float(self.drug_price.get())
             stock = int(self.drug_stock.get())
