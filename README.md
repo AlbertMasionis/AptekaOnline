@@ -6,7 +6,6 @@ Apteka Online jest aplikacją stworzoną w Pythonie, umożliwiającą zarządzan
 Projekt wykorzystuje bibliotekę `customtkinter` do stworzenia interfejsu graficznego oraz moduły do obsługi baz danych w formacie CSV i XLSX.
 
 ---
-
 ## Funkcjonalności
 
 - Rejestracja i usuwanie klientów z bazy danych
