@@ -47,10 +47,6 @@ from PIL import Image
 from modules.register_form import register
 from modules.login_form import login
 from modules.drug_finder import drugs
-#from modules.admin_panel import AdminPanel
-#from modules.buy_drugs import BuyDrugsWindow
-#from modules.session import logged_user
-#import tkinter.messagebox as messageboxz
 import sys
 
 ctk.set_appearance_mode("dark")

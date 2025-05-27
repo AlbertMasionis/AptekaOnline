@@ -1,9 +1,6 @@
 import customtkinter as ctk
-#from tkinter import messagebox
-#from modules.buy_drugs import BuyDrugsWindow
 from modules.customer_manager import register_client, delete_client
 from modules.drug_manager import add_drug, remove_drug
-
 
 class AdminPanel(ctk.CTkToplevel):
     def __init__(self, master=None):

@@ -1,8 +1,6 @@
 import customtkinter as ctk
 import csv
 from modules.session import logged_user
-#from modules.buy_drugs import BuyDrugsWindow
-#from modules.user_panel import UserPanel
 
 class login(ctk.CTkToplevel):
     def __init__(self, master=None):

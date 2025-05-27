@@ -158,7 +158,7 @@ class register(ctk.CTkToplevel):
             self.error_label.configure(text="Hasła się nie zgadzają.")
             return
 
-        # Walidacja formatu numeru telefonu (tylko cyfry)
+        # Sprawdzenie formatu numeru telefonu (tylko cyfry)
         if not data["phone"].isdigit():
             self.error_label.configure(text="Numer telefonu może zawierać tylko cyfry.")
             return

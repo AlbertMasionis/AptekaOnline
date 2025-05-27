@@ -57,12 +57,25 @@ def delete_client(identifier):
     with open("database/customer.csv", mode="w", newline='', encoding="utf-8") as file:
         csv.writer(file).writerows(updated_rows)
     return removed
+
 def get_purchase_history(client_id):
-    with open("database/customer.csv", mode="r", encoding="utf-8") as file:
-        reader = csv.reader(file)
-        next(reader)
-        for row in reader:
-            if str(row[0]) == str(client_id):
-                history = row[6]
+    try: # potrzebne aby móc kontrolowac błędy
+        with open("database/customer.csv", mode="r", encoding="utf-8") as file:
+            reader = csv.reader(file)
+            next(reader)
+            for row in reader:
+                if str(row[0]) == str(client_id):
+                    history = row[6]
                 return history.split(",") if history else []
-    return []
+        return []
+
+    # obsługa błędów
+    except FileNotFoundError:
+        print("Błąd: Plik customer.csv nie istnieje!")
+        return []
+    except PermissionError:
+        print("Brak uprawnień do odczytu pliku!")
+        return []
+    except Exception as e:
+        print(f"Niespodziewany błąd: {e}")
+        return []

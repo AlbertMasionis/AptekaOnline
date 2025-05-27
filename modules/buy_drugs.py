@@ -2,7 +2,6 @@ import customtkinter as ctk
 import pandas as pd
 from modules.session import logged_user
 
-
 class BuyDrugsWindow(ctk.CTkToplevel):
     def __init__(self, master=None):
         super().__init__(master)

@@ -3,7 +3,6 @@ from modules.buy_drugs import BuyDrugsWindow
 from modules.session import logged_user
 from modules.customer_manager import get_purchase_history
 
-
 class UserPanel(ctk.CTkToplevel):
     def __init__(self, master=None):
         super().__init__(master)
