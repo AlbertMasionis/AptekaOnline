@@ -133,9 +133,9 @@ class BuyDrugsWindow(ctk.CTkToplevel):
             df = pd.read_csv("database/customer.csv")
             idx = df[df["email"] == logged_user["email"]].index[0]
 
-            obecne = df.at[idx, "historia_zakupow"] if "historia_zakupow" in df.columns else ""
-            if pd.isna(obecne):
-                obecne = ""
+#funkcja wyższego rzędu, pobiera historie zakupów klienta jeśli kolumna "historia_zakupow" nie istnieje zwraca pusty string, jest istnieje zachowuje ja
+            obecne = (lambda x: x if not pd.isna(x) else "")(df.at[idx, "historia_zakupow"]) if "historia_zakupow" in df.columns else ""
+            #pd.isna(x) - sprawdza brakujace dane
 
             nowa = f"{obecne}; {lek}:{ilosc}".strip("; ")
             df.at[idx, "historia_zakupow"] = nowa
