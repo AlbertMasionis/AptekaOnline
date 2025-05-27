@@ -115,12 +115,66 @@ class SerwisKlientow:
         return id_klienta
 
     def znajdz_klienta(self, id_klienta):
+        """
+        Wyszukuje klienta w systemie na podstawie identyfikatora.
+
+          Przegląda listę zarejestrowanych klientów i zwraca obiekt klienta
+          o podanym ID lub None jeśli klient nie istnieje.
+
+          Args:
+              id_klienta (str): Unikalny identyfikator klienta w systemie
+                                (powinien być 4-cyfrowym stringiem np. "0421")
+
+          Returns:
+              Optional[Klient]: Znaleziony obiekt klienta lub None jeśli nie znaleziono
+
+          Example:
+              >>> klient = serwis.znajdz_klienta("0421")
+              >>> if klient:
+              ...     print(f"Znaleziono: {klient.imie} {klient.nazwisko}")
+              ... else:
+              ...     print("Klient nie istnieje")
+
+          Note:
+              - Wyszukiwanie jest dokładne (exact match)
+              - Funkcja nie rzuca wyjątków dla nieistniejących ID
+              - W przypadku duplikatów ID zwraca pierwsze znalezione wystąpienie
+          """
         for klient in self.klienci:
             if klient.id_klienta==id_klienta:
                 return klient
         return None
     @loguj_akcje
     def Czy_jest_email(self, email):
+        """
+        Sprawdza, czy podany email istnieje już w systemie klientów.
+
+            Funkcja wykonuje porównanie adresów email po normalizacji (usunięcie białych znaków
+            i konwersja na małe litery), aby zapewnić niezawodne sprawdzanie unikalności.
+
+            Args:
+                email (str): Adres email do sprawdzenia. Powinien zawierać poprawny format email.
+
+            Returns:
+                bool:
+                    - True jeśli email istnieje w systemie
+                    - False jeśli email nie istnieje
+
+            Raises:
+                AttributeError: Jeśli obiekt klienta nie posiada atrybutu 'email'
+
+            Example:
+                >>> serwis = SerwisKlientow()
+                >>> serwis.Czy_jest_email("jan.kowalski@example.com")
+                True
+                >>> serwis.Czy_jest_email("nieistniejacy@email.com")
+                False
+
+            Note:
+                - Porównanie jest niewrażliwe na wielkość liter
+                - Funkcja ignoruje białe znaki na początku/końcu adresu
+                - Nie sprawdza poprawności formatu email (tylko porównuje istniejące)
+            """
         email = email.strip().lower()
         for klient in self.klienci:
             if klient.email.strip().lower() == email:

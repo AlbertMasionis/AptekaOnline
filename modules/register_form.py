@@ -1,3 +1,55 @@
+"""
+Moduł rejestracji klienta - implementacja okna rejestracji w aplikacji CustomTkinter.
+
+Moduł zawiera klasę `register` reprezentującą formularz rejestracyjny nowego użytkownika,
+z pełną walidacją danych i integracją z serwisem klientów.
+
+Klasy:
+    register(ctk.CTkToplevel): Główne okno rejestracji dziedziczące po CTkToplevel.
+
+Atrybuty klasy register:
+    serwis_klienow (SerwisKlientow): Instancja serwisu do obsługi operacji na klientach
+    inputs (dict): Słownik mapujący nazwy pól na widgety Entry (przechowuje referencje do pól formularza)
+    error_label (CTkLabel): Etykieta wyświetlająca komunikaty o błędach i sukcesach
+
+Metody klasy register:
+    __init__(master=None): Inicjalizacja okna rejestracji i budowa interfejsu
+    submit_form(): Przetwarza dane z formularza i wykonuje rejestrację
+
+Szczegóły implementacji:
+    - Wykorzystuje CustomTkinter dla nowoczesnego wyglądu UI
+    - Zawiera pełną walidację danych przed rejestracją
+    - Integruje się z SerwisKlientow poprzez metody:
+        * zarejestruj() - tworzenie nowego klienta
+        * Czy_jest_email() - weryfikacja unikalności emaila
+        * Czy_jest_telefon() - weryfikacja unikalności telefonu
+    - Automatycznie zapisuje dane do plików CSV po udanej rejestracji
+
+Przykład użycia:
+    >>> app = ctk.CTk()
+    >>> registration_window = register(app)
+    >>> app.mainloop()
+
+Wymagania:
+    - Python 3.7+
+    - customtkinter
+    - modules.Serwis_Klienta.SerwisKlientow
+
+Typowe komunikaty błędów:
+    - "Uzupełnij wszystkie pola." - gdy któreś pole jest puste
+    - "Hasło musi mieć co najmniej 6 znaków." - nie spełnione wymagania hasła
+    - "Hasła się nie zgadzają." - różne wartości w polach hasła
+    - "Email jest już zarejestrowany!" - konflikt unikalności emaila
+    - "Telefon jest już zarejestrowany!" - konflikt unikalności telefonu
+
+Typowy komunikat sukcesu:
+    "Rejestracja udana! ID klienta: [id]" - wyświetlany po pomyślnej rejestracji
+
+Uwagi:
+    - Okno automatycznie zamyka się po 3 sekundach od udanej rejestracji
+    - Hasła są maskowane podczas wprowadzania
+    - Wszystkie pola są obowiązkowe
+"""
 import customtkinter as ctk
 from modules.Serwis_Klienta import SerwisKlientow
 

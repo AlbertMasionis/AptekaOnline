@@ -8,6 +8,44 @@ def register_client(firstname, lastname, phone, email, password):
         writer.writerow([client_id, firstname, lastname, phone, email, password, ""])
 
 def delete_client(identifier):
+    """Usuwa klienta z bazy danych na podstawie identyfikatora (ID lub email).
+
+       Funkcja wyszukuje klienta w pliku CSV i usuwa wszystkie wiersze zawierające
+       podany identyfikator. Obsługuje wyszukiwanie zarówno po ID jak i adresie email.
+
+       Args:
+           identifier (str | int): Unikalny identyfikator klienta do usunięcia.
+                                  Może być:
+                                  - ID klienta (liczba)
+                                  - Adres email (string)
+
+       Returns:
+           bool: Flaga wskazująca czy operacja się powiodła:
+                 - True jeśli znaleziono i usunięto klienta
+                 - False jeśli klient nie istnieje
+
+       Raises:
+           FileNotFoundError: Jeśli plik database/customer.csv nie istnieje
+           PermissionError: Jeśli brak uprawnień do zapisu pliku
+
+       Example:
+           >>> # Usunięcie po ID
+           >>> delete_client(1001)
+           True
+
+           >>> # Usunięcie po emailu
+           >>> delete_client("klient@example.com")
+           True
+
+           >>> # Próba usunięcia nieistniejącego klienta
+           >>> delete_client("nieistniejacy@email.com")
+           False
+
+       Note:
+           - Funkcja modyfikuje bezpośrednio plik CSV
+           - Usuwa wszystkie wystąpienia identyfikatora (teoretyczna ochrona przed duplikatami)
+           - W przypadku błędów plikowych może pozostawić częściowe dane
+       """
     removed = False
     updated_rows = []
     with open("database/customer.csv", mode="r", encoding="utf-8") as file:

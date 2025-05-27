@@ -1,3 +1,47 @@
+"""
+Moduł głównego interfejsu użytkownika aplikacji Apteka Online
+
+Implementuje główne okno aplikacji z menu nawigacyjnym, wykorzystujące bibliotekę CustomTkinter.
+Zawiera funkcjonalności do zarządzania wyglądem aplikacji i podstawową nawigację.
+
+Struktura interfejsu:
+1. Główne okno aplikacji (1000x900px)
+   - Motyw ciemny ('dark')
+   - Kolor akcentu: zielony ('green')
+   - Tło: #1f2937 (ciemno-szare)
+
+2. Główne elementy UI:
+   - Logo aplikacji (assets/logo.png)
+   - Przyciski nawigacyjne z ikonami:
+     * Zaloguj się (assets/login.png)
+     * Zarejestruj się (assets/register.png)
+     * Przeglądaj leki (assets/browse.png)
+     * Wyjdź (assets/exit.png)
+
+Funkcje:
+- run_gui(): Inicjalizuje i uruchamia główne okno aplikacji
+
+Wymagania systemowe:
+- Python 3.7+
+- CustomTkinter >= 5.0
+- Pillow (PIL) do obsługi obrazów
+
+Ścieżki do zasobów:
+- assets/icon.ico - ikona aplikacji
+- assets/logo.png - logo aplikacji
+- assets/[login|register|browse|exit].png - ikony przycisków
+
+Przykład użycia:
+    if __name__ == "__main__":
+        run_gui()
+
+Uwagi:
+- Aplikacja używa protokołu WM_DELETE_WINDOW do poprawnego zamykania
+- Wszystkie ścieżki do zasobów są względne
+- Rozmiary i kolory przycisków są znormalizowane
+"""
+
+
 import customtkinter as ctk
 from PIL import Image
 from modules.register_form import register
