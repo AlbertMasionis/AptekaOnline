@@ -1,4 +1,3 @@
-#from modules.login_form import login
 from modules.gui import run_gui
 
 def __main__():
